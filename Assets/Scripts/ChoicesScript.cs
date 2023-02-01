@@ -12,6 +12,7 @@ public class ChoicesScript : MonoBehaviour
     public Button button_2;
     public Button button_3;
     
+    private GameObject choicesPanel;
     public GameObject entity_panel;
     public TMP_Text entity_name;
     public TMP_Text entity_description;
@@ -24,6 +25,9 @@ public class ChoicesScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        choicesPanel = GameObject.Find("ChoicesCanvas");
+        choicesPanel.SetActive(false);
+        
         if (this.choices == null)
         {
             this.ShowChoicesScreen("enemy");
@@ -42,6 +46,7 @@ public class ChoicesScript : MonoBehaviour
         this.generateChoices();
 
         // set images of buttons
+        choicesPanel.SetActive(true);
     }
 
     void generateChoices()
@@ -72,7 +77,7 @@ public class ChoicesScript : MonoBehaviour
         this.entity_name.text = this.choices[this.current_choice,0];
         this.entity_description.text = this.choices[this.current_choice,1];
 
-        this.entity_panel.active  = true;
+        this.entity_panel.SetActive(true);
     }
 
     public void PickChoice()
@@ -82,6 +87,11 @@ public class ChoicesScript : MonoBehaviour
         // set prefs by choice
 
         // start next scene
+        if (type == "enemy") {
+            // change scene
+        } else {
+            choicesPanel.SetActive(false);
+        }
     }
     
 }

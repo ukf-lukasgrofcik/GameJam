@@ -14,6 +14,7 @@ public class Gamemode : MonoBehaviour
 
     public GameObject[] enemy;
     private GameObject[,] characters;
+    private GameObject[] enemies;
 
     public int roomCount;
     public int roundCount;
@@ -51,29 +52,22 @@ public class Gamemode : MonoBehaviour
     void nextRound()
     {
 
-        while (enemyCount > 0)
+        if (enemyCount > 0)
         {
             roundCount++;
-            Debug.Log("round number>" + roundCount);
-
-            ///player first
-            /// maybe attack animation
-
-            StartCoroutine(wait());
             
-            
-            eHP = enemy[0].GetComponent<EnemyHandler>().health;
+            eHP = enemies[0].GetComponent<EnemyHandler>().health;
+            Debug.Log(eHP);
+
             if (eHP - pScript.damage <= 0)
             {
                 enemyCount--;
-                enemy[0].GetComponent<EnemyHandler>().kill();
+                Destroy(enemies[0]);
                 Debug.Log("player killed enemy");
             }
             else
             {
-                enemy[0].GetComponent<EnemyHandler>().health = eHP - pScript.damage;
-                Debug.Log("player dealt " + pScript.damage + " to first enemy");
-                Debug.Log("enemy has now " + (eHP - pScript.damage) + " health");
+                enemies[0].GetComponent<EnemyHandler>().health = eHP - pScript.damage;
             }
 
             ///later cycle through enemies
@@ -81,7 +75,7 @@ public class Gamemode : MonoBehaviour
 
             for (int i = 0; i < enemyCount; i++)
             {
-                eDMG = enemy[i].GetComponent<EnemyHandler>().damage;
+                eDMG = enemies[i].GetComponent<EnemyHandler>().damage;
                 pScript.health = pScript.health - eDMG;
                 if (pScript.health <= 0)
                 {
@@ -90,6 +84,10 @@ public class Gamemode : MonoBehaviour
                     return;
                 }
             }
+            
+            StartCoroutine(wait());
+
+            return;
         }
         
         endCombat();
@@ -102,21 +100,18 @@ public class Gamemode : MonoBehaviour
             
         }*/
         
-        ///make look 
-        Instantiate(enemy[0],enemyLoc.transform);
+        ///make look
+        enemies = new GameObject[]
+        {
+            Instantiate(enemy[0],enemyLoc.transform)
+        };
+
         enemyCount++;
     }
 
     void endCombat()
     {
         playerAnimator.SetTrigger("combat_ended");
-        
-        // on end animation show choices 'item'
-        choicesManager.ShowChoicesScreen("item");
-        
-        // on pick move to chooseEnemyPosition
-        
-        // on end animation show choices 'enemy'
     }
 
     public void showPickItems()
@@ -142,5 +137,7 @@ public class Gamemode : MonoBehaviour
     IEnumerator wait()
     {
         yield return new WaitForSeconds(1);
+
+        nextRound();
     }
 }

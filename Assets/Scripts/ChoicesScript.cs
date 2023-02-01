@@ -27,13 +27,8 @@ public class ChoicesScript : MonoBehaviour
     void Start()
     {
         choicesPanel = GameObject.Find("ChoicesCanvas");
-        Debug.Log(choicesPanel);
-        choicesPanel.SetActive(false);
         
-        if (this.choices == null)
-        {
-            this.ShowChoicesScreen("enemy");
-        }
+        choicesPanel.SetActive(false);
     }
 
     // Update is called once per frame

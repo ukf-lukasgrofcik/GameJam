@@ -13,10 +13,14 @@ public class Gamemode : MonoBehaviour
     public Animator anim;
 
     public GameObject[] enemy;
+    private GameObject[,] characters;
+    
     
     public int roomCount;
     public int roundCount;
     public int enemyCount;
+    
+    private float eDMG;
     
     
     // Start is called before the first frame update
@@ -27,18 +31,12 @@ public class Gamemode : MonoBehaviour
         choicesManager = GameObject.Find("ChoicesManager").GetComponent<ChoicesScript>();
         pScript = player.GetComponent<PlayerHandler>();
         pScript.InitStats();
-        Debug.Log("health/damage/armor "+pScript.getHealth()+"/"+pScript.getDamage()+"/"+pScript.getArmor());
+        Debug.Log("health/damage/armor "+pScript.health+"/"+pScript.damage+"/"+pScript.armor);
         startRoom();
 
         ///anim = player.GetComponent<Animator>();
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
+    
     void startRoom()
     {
         ///
@@ -46,6 +44,8 @@ public class Gamemode : MonoBehaviour
         ///
         
         spawnEnemies();
+        setActionOrder();
+        
         nextRound();
     }
     
@@ -62,12 +62,33 @@ public class Gamemode : MonoBehaviour
             player.transform.position = enemyLoc.transform.position;
 
             choicesManager.ShowChoicesScreen("enemy");
+            roomEnd();
         }
+
+        roundCount++;
+
+        ///player first
+        /// maybe attack animation
+        
+        enemy[0].GetComponent<EnemyHandler>().health = enemy[0].GetComponent<EnemyHandler>().health - pScript.damage;
         
         
-        
-        
-        
+        ///later cycle through enemies
+        ///animation for attacking enemy
+
+        for (int i = 0; i < enemyCount; i++)
+        {
+            eDMG = enemy[1].GetComponent<EnemyHandler>().damage;
+            pScript.health = pScript.health - eDMG ;
+            if (pScript.health <= 0)
+            {
+                pScript.kill();
+                gameOver();
+            }
+        }
+
+         
+
     }
 
     void spawnEnemies()
@@ -76,8 +97,23 @@ public class Gamemode : MonoBehaviour
         {
             
         }*/
+        
         ///make look 
-        //Instantiate(enemy,enemyLoc.transform);
+        Instantiate(enemy[1],enemyLoc.transform);
     }
 
+    void roomEnd()
+    {
+        ///getting rewards
+    }
+
+    void setActionOrder()
+    {
+        ///for later
+    }
+
+    void gameOver()
+    {
+        ///ui for losing
+    }
 }

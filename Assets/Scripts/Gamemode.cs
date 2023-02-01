@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class Gamemode : MonoBehaviour
 {
+
     private GameObject player;
     private GameObject enemyLoc;
     private PlayerHandler pScript;
+    private ChoicesScript choicesManager;
     
     public Animator anim;
 
@@ -26,6 +28,7 @@ public class Gamemode : MonoBehaviour
     {
         player = GameObject.Find("Player");
         enemyLoc = GameObject.Find("enemy1Pos");
+        choicesManager = GameObject.Find("ChoicesManager").GetComponent<ChoicesScript>();
         pScript = player.GetComponent<PlayerHandler>();
         pScript.InitStats();
         Debug.Log("health/damage/armor "+pScript.health+"/"+pScript.damage+"/"+pScript.armor);
@@ -57,6 +60,8 @@ public class Gamemode : MonoBehaviour
             ///later add animation for going to door
             ///anim.Play();
             player.transform.position = enemyLoc.transform.position;
+
+            choicesManager.ShowChoicesScreen("enemy");
             roomEnd();
         }
 

@@ -2915,7 +2915,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b73c61771bea49409af40c4ec69f53b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerAnimator: {fileID: 0}
+  playerAnimator: {fileID: 1250167862}
   enemy:
   - {fileID: 244235505520557636, guid: 57dbe32bdc16bb54b8b075cd632be1e8, type: 3}
   roomCount: 0

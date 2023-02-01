@@ -14,10 +14,7 @@ public class EnemyHandler : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        health = Random.Range(5, 10);
-        damage = Random.Range(2, 4);
-        armor = Random.Range(0, 1);
-        speed = Random.Range(1, 6);
+        
     }
 
     // Update is called once per frame
@@ -25,11 +22,5 @@ public class EnemyHandler : MonoBehaviour
     {
         
     }
-
-    public void kill()
-    {
-        Destroy(this);
-    }
-    
 
 }

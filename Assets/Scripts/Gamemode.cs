@@ -19,14 +19,14 @@ public class Gamemode : MonoBehaviour
     public int roundCount;
     public int enemyCount;
     
-    private float eDMG;
-    
+    private int eDMG;
+    private int eHP;
     
     // Start is called before the first frame update
     void Start()
     {
         player = GameObject.Find("Player");
-        enemyLoc = GameObject.Find("enemy1Pos");
+        enemyLoc = GameObject.Find("chooseEnemyPosition");
         choicesManager = GameObject.Find("ChoicesManager").GetComponent<ChoicesScript>();
         pScript = player.GetComponent<PlayerHandler>();
         pScript.InitStats();
@@ -50,38 +50,49 @@ public class Gamemode : MonoBehaviour
     
     void nextRound()
     {
-        if (enemyCount==0)
+
+        while (enemyCount > 0)
         {
-            //end-go to door  
-            roundCount = 0;
+            roundCount++;
+            Debug.Log("round number>" + roundCount);
+
+            ///player first
+            /// maybe attack animation
+
+            StartCoroutine(wait());
             
-            endCombat();
-        }
-
-        roundCount++;
-
-        ///player first
-        /// maybe attack animation
-        
-        enemy[0].GetComponent<EnemyHandler>().health = enemy[0].GetComponent<EnemyHandler>().health - pScript.damage;
-        
-        
-        ///later cycle through enemies
-        ///animation for attacking enemy
-
-        for (int i = 0; i < enemyCount; i++)
-        {
-            eDMG = enemy[1].GetComponent<EnemyHandler>().damage;
-            pScript.health = pScript.health - eDMG ;
-            if (pScript.health <= 0)
+            
+            eHP = enemy[0].GetComponent<EnemyHandler>().health;
+            if (eHP - pScript.damage <= 0)
             {
-                pScript.kill();
-                gameOver();
+                enemyCount--;
+                enemy[0].GetComponent<EnemyHandler>().kill();
+                Debug.Log("player killed enemy");
+            }
+            else
+            {
+                enemy[0].GetComponent<EnemyHandler>().health = eHP - pScript.damage;
+                Debug.Log("player dealt " + pScript.damage + " to first enemy");
+                Debug.Log("enemy has now " + (eHP - pScript.damage) + " health");
+            }
+
+            ///later cycle through enemies
+            ///animation for attacking enemy
+
+            for (int i = 0; i < enemyCount; i++)
+            {
+                eDMG = enemy[i].GetComponent<EnemyHandler>().damage;
+                pScript.health = pScript.health - eDMG;
+                if (pScript.health <= 0)
+                {
+                    pScript.kill();
+                    gameOver();
+                    return;
+                }
             }
         }
-
-         
-
+        
+        endCombat();
     }
 
     void spawnEnemies()
@@ -92,7 +103,8 @@ public class Gamemode : MonoBehaviour
         }*/
         
         ///make look 
-        Instantiate(enemy[1],enemyLoc.transform);
+        Instantiate(enemy[0],enemyLoc.transform);
+        enemyCount++;
     }
 
     void endCombat()
@@ -125,5 +137,10 @@ public class Gamemode : MonoBehaviour
     void gameOver()
     {
         ///ui for losing
+    }
+
+    IEnumerator wait()
+    {
+        yield return new WaitForSeconds(1);
     }
 }

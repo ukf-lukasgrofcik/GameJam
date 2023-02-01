@@ -622,7 +622,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   anim: {fileID: 0}
-  enemy: []
+  enemy:
+  - {fileID: 244235505520557636, guid: 57dbe32bdc16bb54b8b075cd632be1e8, type: 3}
   roomCount: 0
   roundCount: 0
   enemyCount: 0

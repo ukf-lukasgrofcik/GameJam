@@ -9,13 +9,12 @@ public class Gamemode : MonoBehaviour
     private GameObject enemyLoc;
     private PlayerHandler pScript;
     private ChoicesScript choicesManager;
-    
-    public Animator anim;
+
+    public Animator playerAnimator;
 
     public GameObject[] enemy;
     private GameObject[,] characters;
-    
-    
+
     public int roomCount;
     public int roundCount;
     public int enemyCount;
@@ -55,14 +54,8 @@ public class Gamemode : MonoBehaviour
         {
             //end-go to door  
             roundCount = 0;
-          
-          
-            ///later add animation for going to door
-            ///anim.Play();
-            player.transform.position = enemyLoc.transform.position;
-
-            choicesManager.ShowChoicesScreen("enemy");
-            roomEnd();
+            
+            endCombat();
         }
 
         roundCount++;
@@ -102,9 +95,26 @@ public class Gamemode : MonoBehaviour
         Instantiate(enemy[1],enemyLoc.transform);
     }
 
-    void roomEnd()
+    void endCombat()
     {
-        ///getting rewards
+        playerAnimator.SetTrigger("combat_ended");
+        
+        // on end animation show choices 'item'
+        choicesManager.ShowChoicesScreen("item");
+        
+        // on pick move to chooseEnemyPosition
+        
+        // on end animation show choices 'enemy'
+    }
+
+    public void showPickItems()
+    {
+        choicesManager.ShowChoicesScreen("item");
+    }
+    
+    public void showPickEnemies()
+    {
+        choicesManager.ShowChoicesScreen("enemy");
     }
 
     void setActionOrder()

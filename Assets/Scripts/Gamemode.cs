@@ -9,13 +9,12 @@ public class Gamemode : MonoBehaviour
     private GameObject enemyLoc;
     private PlayerHandler pScript;
     private ChoicesScript choicesManager;
-    
-    public Animator anim;
+
+    public Animator playerAnimator;
 
     public GameObject[] enemy;
     private GameObject[,] characters;
-    
-    
+
     public int roomCount;
     public int roundCount;
     public int enemyCount;
@@ -54,7 +53,6 @@ public class Gamemode : MonoBehaviour
 
         while (enemyCount > 0)
         {
-            
             roundCount++;
             Debug.Log("round number>" + roundCount);
 
@@ -94,7 +92,7 @@ public class Gamemode : MonoBehaviour
             }
         }
         
-        
+        endCombat();
     }
 
     void spawnEnemies()
@@ -109,9 +107,26 @@ public class Gamemode : MonoBehaviour
         enemyCount++;
     }
 
-    void roomEnd()
+    void endCombat()
     {
-        ///getting rewards
+        playerAnimator.SetTrigger("combat_ended");
+        
+        // on end animation show choices 'item'
+        choicesManager.ShowChoicesScreen("item");
+        
+        // on pick move to chooseEnemyPosition
+        
+        // on end animation show choices 'enemy'
+    }
+
+    public void showPickItems()
+    {
+        choicesManager.ShowChoicesScreen("item");
+    }
+    
+    public void showPickEnemies()
+    {
+        choicesManager.ShowChoicesScreen("enemy");
     }
 
     void setActionOrder()

@@ -11,10 +11,12 @@ public class PlayerHandler : MonoBehaviour
     public int armor;
     public int speed;
 
+    private Gamemode gamemode;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        gamemode = GameObject.Find("SceneManager").GetComponent<Gamemode>();
     }
 
     // Update is called once per frame
@@ -35,4 +37,15 @@ public class PlayerHandler : MonoBehaviour
     {
         Destroy(this);
     }
+
+    void onMovedToPickItems()
+    {
+        gamemode.showPickItems();
+    }
+    
+    void onMovedToPickEnemies()
+    {
+        gamemode.showPickEnemies();
+    }
+    
 }

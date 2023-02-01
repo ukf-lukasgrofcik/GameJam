@@ -21,11 +21,13 @@ public class ChoicesScript : MonoBehaviour
 
     private string[,] choices;
     private string type;
+    public Animator playerAnimator;
 
     // Start is called before the first frame update
     void Start()
     {
         choicesPanel = GameObject.Find("ChoicesCanvas");
+        Debug.Log(choicesPanel);
         choicesPanel.SetActive(false);
         
         if (this.choices == null)
@@ -86,11 +88,15 @@ public class ChoicesScript : MonoBehaviour
 
         // set prefs by choice
 
-        // start next scene
-        if (type == "enemy") {
+        if ( type == "enemy" ) {
             // change scene
-        } else {
             choicesPanel.SetActive(false);
+            playerAnimator.SetTrigger("enemy_picked");
+        }
+
+        if (type == "item") {
+            choicesPanel.SetActive(false);
+            playerAnimator.SetTrigger("item_picked");
         }
     }
     

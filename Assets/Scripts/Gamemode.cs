@@ -17,10 +17,12 @@ public class Gamemode : MonoBehaviour
     public GameObject stumpPrefab;
     public GameObject eggPrefab;
     public GameObject wormPrefab;
+    public GameObject bossPrefab;
 
     private GameObject[,] characters;
     private GameObject[] enemies;
 
+	private bool is_boss_fight = false;
     public int roomCount;
     public int roundCount;
     public int enemyCount;
@@ -116,6 +118,10 @@ public class Gamemode : MonoBehaviour
 		if ( PlayerPrefs.GetString("next_enemy") == "StumpPrefab" ) enemy = stumpPrefab;
 		if ( PlayerPrefs.GetString("next_enemy") == "EggPrefab" ) enemy = eggPrefab;
 		if ( PlayerPrefs.GetString("next_enemy") == "WormPrefab" ) enemy = wormPrefab;
+		if ( PlayerPrefs.GetString("next_enemy") == "BossPrefab" ) {
+			is_boss_fight = true;
+			enemy = bossPrefab;
+		}
 
 		if ( enemy == null ) enemy = goblinPrefab;
 
@@ -129,6 +135,11 @@ public class Gamemode : MonoBehaviour
 
     void endCombat()
     {
+		if (is_boss_fight) {
+        	// -- WIN
+			return;
+		}
+
         playerAnimator.SetTrigger("combat_ended");
     }
 

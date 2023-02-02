@@ -255,7 +255,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 9af2b23db2565404683728281a0476b2, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -345,7 +345,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &173634718
 Transform:
   m_ObjectHideFlags: 0
@@ -394,7 +394,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 9af2b23db2565404683728281a0476b2, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -470,7 +470,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Peps
   description: Hm sweet (useless)
-  material: {fileID: 2100000, guid: 0097f8367fd94de46af471d8ad53dfac, type: 2}
+  texture: {fileID: 0}
 --- !u!1 &379108031
 GameObject:
   m_ObjectHideFlags: 0
@@ -517,7 +517,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Apple
   description: Delicious (+5 health)
-  material: {fileID: 2100000, guid: a6ce81045792ff24bbe626794377f2c8, type: 2}
+  texture: {fileID: 0}
 --- !u!1 &384871816
 GameObject:
   m_ObjectHideFlags: 0
@@ -585,7 +585,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 9af2b23db2565404683728281a0476b2, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -682,7 +682,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 637e7fa01f46c1848b00750b73c109b5, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -973,7 +973,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Egg
   description: Oh hell nah!
-  material: {fileID: 2100000, guid: 1aa977a98c35dc749a70ec2323f0d25b, type: 2}
+  texture: {fileID: 0}
 --- !u!1 &650647819
 GameObject:
   m_ObjectHideFlags: 0
@@ -1041,7 +1041,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 50021404ebd1f2a4e878557ae61f5d33, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1435,7 +1435,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: c72ca07cbff48094fa6dbfb28d811013, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1703,7 +1703,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 934885426}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3, y: 1.5, z: 0}
+  m_LocalPosition: {x: -0.14, y: 1.25, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1786,8 +1786,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: 0.08715578, y: 0, z: 0, w: 0.9961947}
-  m_LocalPosition: {x: 0, y: 3, z: -8}
+  m_LocalRotation: {x: 0.1807638, y: -0.005901107, z: 0.0010845904, w: 0.9835082}
+  m_LocalPosition: {x: -0.11142613, y: 4.0507617, z: -5.403411}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2072,7 +2072,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 9af2b23db2565404683728281a0476b2, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2251,7 +2251,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 2c0ab9ce29c6a51429e9052a444e8f52, type: 2}
+  - {fileID: 2100000, guid: f160abdaabe21e54cb8eabfa386887b6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2588,7 +2588,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Goblin
   description: Green f*cker
-  material: {fileID: 2100000, guid: 9a04ca186f338734dbc0009f6060f11b, type: 2}
+  texture: {fileID: 0}
 --- !u!1 &1467344881
 GameObject:
   m_ObjectHideFlags: 0
@@ -2750,14 +2750,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1470166116}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.5934936, y: -2.620916, z: 7.374511}
-  m_LocalScale: {x: 30, y: 20, z: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 1, w: 0}
+  m_LocalPosition: {x: 0.0934936, y: -0.53, z: 7.374511}
+  m_LocalScale: {x: 11.5, y: 4, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 133767013}
   m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
 --- !u!65 &1470166118
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2791,7 +2791,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 90ce48aa0fa49d342b5bcb01a9dbe3ad, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2867,7 +2867,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Worm
   description: Sneaky little sh*ts
-  material: {fileID: 2100000, guid: a1b7eccc9509cf845927695a75286959, type: 2}
+  texture: {fileID: 0}
 --- !u!1 &1500441498
 GameObject:
   m_ObjectHideFlags: 0
@@ -2914,7 +2914,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Vaccine
   description: Is it safe? (+5 speed)
-  material: {fileID: 2100000, guid: d3b000fc145b88f44b17bf54bd6877f3, type: 2}
+  texture: {fileID: 0}
 --- !u!1 &1563913217
 GameObject:
   m_ObjectHideFlags: 0
@@ -3037,7 +3037,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Stump
   description: What he gonna do?
-  material: {fileID: 2100000, guid: d62c27d73efb033469be070dea347702, type: 2}
+  texture: {fileID: 0}
 --- !u!1 &1635782079
 GameObject:
   m_ObjectHideFlags: 0
@@ -3693,7 +3693,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 9af2b23db2565404683728281a0476b2, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3790,7 +3790,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 9af2b23db2565404683728281a0476b2, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4004,8 +4004,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerAnimator: {fileID: 1250167862}
   endGamePanel: {fileID: 1934254975}
-  enemy:
-  - {fileID: 244235505520557636, guid: 57dbe32bdc16bb54b8b075cd632be1e8, type: 3}
+  goblinPrefab: {fileID: 244235505520557636, guid: 57dbe32bdc16bb54b8b075cd632be1e8, type: 3}
+  stumpPrefab: {fileID: 244235505520557636, guid: dea95378b442c2f44a437531ef967f31, type: 3}
+  eggPrefab: {fileID: 244235505520557636, guid: 43ab1f64f3a7aec48b5b62befe9de456, type: 3}
+  wormPrefab: {fileID: 244235505520557636, guid: 3395d2566261aa84f92a01755bd6ac69, type: 3}
   roomCount: 0
   roundCount: 0
   enemyCount: 0

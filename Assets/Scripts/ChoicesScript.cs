@@ -44,25 +44,6 @@ public class ChoicesScript : MonoBehaviour
 
         this.generateChoices();
 
-        /*
-        Debug.Log(button_1.GetComponentInChildren<Image>().material);
-        Debug.Log(choices[0].material);
-
-        GameObject image_1 = Instantiate(enemy[0], enemyLoc.transform);
-        image_1.transform.parent = button_1.transform;
-        GameObject image_2 = Instantiate(enemy[0], enemyLoc.transform);
-        image_2.transform.parent = button_2.transform;
-        GameObject image_3 = Instantiate(enemy[0], enemyLoc.transform);
-        image_3.transform.parent = button_3.transform;
-        
-        button_1.GetComponentInChildren<Image>().material.SetTexture(choices[0].texture);
-        button_2.GetComponentInChildren<Image>().material.SetTexture(choices[1].texture);
-        button_3.GetComponentInChildren<Image>().material.SetTexture(choices[2].texture);
-        
-        Debug.Log(button_1.GetComponentInChildren<Image>().material);
-        Debug.Log(choices[0].material);
-        */
-        
         choicesPanel.SetActive(true);
     }
 
@@ -74,42 +55,15 @@ public class ChoicesScript : MonoBehaviour
 
     DataScript[] getRandomEnemies()
     {
-        string[] enemies = { "Goblin", "Worm", "Stump", "Egg" };
-        
-        /*
-        string randA = enemies[Random.Range(0, enemies.Length - 1)];
-        string randB = enemies[Random.Range(0, enemies.Length - 1)];
-        while (randB == randA) randB = enemies[Random.Range(0, enemies.Length - 1)];
-        string randC = enemies[Random.Range(0, enemies.Length - 1)];
-        while (randC == randA || randC == randB) randC = enemies[Random.Range(0, enemies.Length - 1)];
-        */
-        string randA = enemies[0];
-        string randB = enemies[1];
-        string randC = enemies[2];
-        
         return new DataScript[3]
         {
             GameObject.Find("Goblin").GetComponent<DataScript>(),
             GameObject.Find("Worm").GetComponent<DataScript>(),
-            GameObject.Find("Stump").GetComponent<DataScript>(),
+            GameObject.Find( Random.Range(0, 3) == 1 ? "Stump" : "Egg" ).GetComponent<DataScript>(),
         };
     }
     DataScript[] getRandomItems()
     {
-        string[] items = { "Apple", "Vaccine", "Peps" };
-
-        /*
-        string randA = items[Random.Range(0, items.Length - 1)];
-        string randB = items[Random.Range(0, items.Length - 1)];
-        while (randB == randA) randB = items[Random.Range(0, items.Length - 1)];
-        string randC = items[Random.Range(0, items.Length - 1)];
-        while (randC == randA || randC == randB) randC = items[Random.Range(0, items.Length - 1)];
-        */
-        
-        string randA = items[0];
-        string randB = items[1];
-        string randC = items[2];
-
         return new DataScript[3]
         {
             GameObject.Find("Apple").GetComponent<DataScript>(),
@@ -140,6 +94,7 @@ public class ChoicesScript : MonoBehaviour
         this.entity_panel.SetActive(false);
         
         // set prefs by choice
+        PlayerPrefs.SetString("next_enemy", choices[current_choice].name + "Prefab");
 
         if ( type == "enemy" ) {
             choicesPanel.SetActive(false);

@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1895523866480669427}
   - component: {fileID: 785165651393930441}
   m_Layer: 0
-  m_Name: GoblinEnemy
+  m_Name: goblinEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -51,6 +51,7 @@ MonoBehaviour:
   damage: 0
   armor: 0
   speed: 0
+  eSprite: {fileID: 21300000, guid: fcfdfce1d294a4f40be6d7ac39401266, type: 3}
 --- !u!33 &1063080743883046339
 MeshFilter:
   m_ObjectHideFlags: 0

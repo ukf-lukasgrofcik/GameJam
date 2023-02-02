@@ -10,6 +10,8 @@ public class EnemyHandler : MonoBehaviour
     public int damage;
     public int armor;
     public int speed;
+
+    public Sprite eSprite;
     
     // Start is called before the first frame update
     void Start()

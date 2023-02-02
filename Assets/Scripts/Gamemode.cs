@@ -5,6 +5,10 @@ using UnityEngine;
 public class Gamemode : MonoBehaviour
 {
 
+	private GameObject endEndGameCanvas;
+	private GameObject winGame;
+	private GameObject loseGame;
+
     private GameObject player;
     private GameObject enemyLoc;
     private PlayerHandler pScript;
@@ -34,6 +38,11 @@ public class Gamemode : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+		endEndGameCanvas = GameObject.Find("EndEndGameCanvas");
+		winGame = GameObject.Find("WinImage");
+		loseGame = GameObject.Find("LoseImage");
+		endEndGameCanvas.SetActive(false);
+
         endGamePanel.SetActive(false);
         player = GameObject.Find("Player");
         enemyLoc = GameObject.Find("chooseEnemyPosition");
@@ -135,8 +144,10 @@ public class Gamemode : MonoBehaviour
 
     void endCombat()
     {
-		if (is_boss_fight) {
-        	// -- WIN
+		if ( is_boss_fight ) { // WIN
+			endEndGameCanvas.SetActive(true);
+			loseGame.SetActive(false);
+        	winGame.GetComponent<Animator>().SetTrigger("fade");
 			return;
 		}
 
@@ -160,7 +171,8 @@ public class Gamemode : MonoBehaviour
 
     void gameOver()
     {
-        ///ui for losing
+		endEndGameCanvas.SetActive(true);
+		winGame.SetActive(false);
     }
 
     public void endLevel()

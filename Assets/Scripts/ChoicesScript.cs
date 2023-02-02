@@ -38,6 +38,16 @@ public class ChoicesScript : MonoBehaviour
 
     public void ShowChoicesScreen(string type)
     {
+        Debug.Log("Level " + PlayerPrefs.GetInt("current_level"));
+        
+        if (type == "enemy" && PlayerPrefs.GetInt("current_level") == 4) {
+            PlayerPrefs.SetString("next_enemy", "BossPrefab");
+            playerAnimator.SetTrigger("enemy_picked");
+            secondDoorAnimator.SetTrigger("open");
+
+            return;
+        }
+        
         this.type = type;
 
         this.text_entity_type.text = type == "enemy" ? "Who will you find in the next room?" : "What loot are you going to find?";
@@ -93,10 +103,8 @@ public class ChoicesScript : MonoBehaviour
 
         this.entity_panel.SetActive(false);
         
-        // set prefs by choice
-        PlayerPrefs.SetString("next_enemy", choices[current_choice].name + "Prefab");
-
         if ( type == "enemy" ) {
+            PlayerPrefs.SetString("next_enemy", choices[current_choice].name + "Prefab");
             choicesPanel.SetActive(false);
             playerAnimator.SetTrigger("enemy_picked");
             secondDoorAnimator.SetTrigger("open");

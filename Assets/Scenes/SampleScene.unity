@@ -4008,6 +4008,7 @@ MonoBehaviour:
   stumpPrefab: {fileID: 244235505520557636, guid: dea95378b442c2f44a437531ef967f31, type: 3}
   eggPrefab: {fileID: 244235505520557636, guid: 43ab1f64f3a7aec48b5b62befe9de456, type: 3}
   wormPrefab: {fileID: 244235505520557636, guid: 3395d2566261aa84f92a01755bd6ac69, type: 3}
+  bossPrefab: {fileID: 244235505520557636, guid: f1910c2aaf0fd79408593ca6d98b8327, type: 3}
   roomCount: 0
   roundCount: 0
   enemyCount: 0

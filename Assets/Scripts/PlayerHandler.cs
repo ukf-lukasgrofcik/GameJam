@@ -12,11 +12,15 @@ public class PlayerHandler : MonoBehaviour
     public int speed;
 
     private Gamemode gamemode;
+    private Animator firstDoorAnimator;
+    private Animator secondDoorAnimator;
 
     // Start is called before the first frame update
     void Start()
     {
         gamemode = GameObject.Find("SceneManager").GetComponent<Gamemode>();
+        firstDoorAnimator = GameObject.Find("FirstDoor").GetComponent<Animator>();
+        secondDoorAnimator = GameObject.Find("SecondDoor").GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -38,6 +42,11 @@ public class PlayerHandler : MonoBehaviour
         Destroy(this);
     }
 
+    void onMovedToCombat()
+    {
+        firstDoorAnimator.SetTrigger("close");
+        gamemode.nextRound();
+    }
     void onMovedToPickItems()
     {
         gamemode.showPickItems();
@@ -46,6 +55,11 @@ public class PlayerHandler : MonoBehaviour
     void onMovedToPickEnemies()
     {
         gamemode.showPickEnemies();
+    }
+    
+    void onMovedToEnd()
+    {
+        secondDoorAnimator.SetTrigger("close");
     }
     
 }

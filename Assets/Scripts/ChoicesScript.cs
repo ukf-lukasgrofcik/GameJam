@@ -22,11 +22,13 @@ public class ChoicesScript : MonoBehaviour
     private string[,] choices;
     private string type;
     public Animator playerAnimator;
+    private Animator secondDoorAnimator;
 
     // Start is called before the first frame update
     void Start()
     {
         choicesPanel = GameObject.Find("ChoicesCanvas");
+        secondDoorAnimator = GameObject.Find("SecondDoor").GetComponent<Animator>();
         
         choicesPanel.SetActive(false);
     }
@@ -87,6 +89,7 @@ public class ChoicesScript : MonoBehaviour
             // change scene
             choicesPanel.SetActive(false);
             playerAnimator.SetTrigger("enemy_picked");
+            secondDoorAnimator.SetTrigger("open");
         }
 
         if (type == "item") {

@@ -46,12 +46,14 @@ public class Gamemode : MonoBehaviour
         spawnEnemies();
         setActionOrder();
         
-        nextRound();
+        //nextRound();
     }
     
-    void nextRound()
+    public void nextRound()
     {
 
+        Debug.Log("nextRound");
+        
         if (enemyCount > 0)
         {
             roundCount++;

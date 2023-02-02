@@ -58,8 +58,6 @@ public class ChoicesScript : MonoBehaviour
         
         choicesPanel.SetActive(true);
         
-        button_1.enabled = false;
-        
         button_1.GetComponent<Image>().sprite = choices[0].Esprite;
         button_2.GetComponent<Image>().sprite = choices[1].Esprite;
         button_3.GetComponent<Image>().sprite = choices[2].Esprite;

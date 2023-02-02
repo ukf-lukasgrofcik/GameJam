@@ -5,6 +5,7 @@ using UnityEngine;
 public class DoorScript : MonoBehaviour
 {
 
+    private GameObject player;
     private Animator playerAnimator;
     private Animator firstDoorAnimator;
     
@@ -12,6 +13,7 @@ public class DoorScript : MonoBehaviour
     
     void Start()
     {
+		player = GameObject.Find("Player");
         playerAnimator = GameObject.Find("Player").GetComponent<Animator>();
         firstDoorAnimator = GameObject.Find("FirstDoor").GetComponent<Animator>();
 
@@ -22,7 +24,10 @@ public class DoorScript : MonoBehaviour
 
     void onDoorOpen(string trigger)
     {
-        Debug.Log(trigger);
+		if ( trigger == "first_door_open" ) {
+			player.GetComponent<AudioScript>().Play();
+		}
+
         playerAnimator.SetTrigger(trigger);
     }
 

@@ -23,12 +23,14 @@ public class ChoicesScript : MonoBehaviour
     private string type;
     public Animator playerAnimator;
     private Animator secondDoorAnimator;
-
+    private PlayerHandler playerHandler;
+    
     // Start is called before the first frame update
     void Start()
     {
         choicesPanel = GameObject.Find("ChoicesCanvas");
         secondDoorAnimator = GameObject.Find("SecondDoor").GetComponent<Animator>();
+        playerHandler = GameObject.Find("Player").GetComponent<PlayerHandler>();
         
         choicesPanel.SetActive(false);
     }
@@ -119,6 +121,26 @@ public class ChoicesScript : MonoBehaviour
         if (type == "item") {
             choicesPanel.SetActive(false);
             playerAnimator.SetTrigger("item_picked");
+
+            string item_name = this.choices[this.current_choice].name;
+            if ( item_name == "Apple" ) {
+                playerHandler.health += 3;
+                playerHandler.max_health += 3;
+                PlayerPrefs.SetInt("player_health", playerHandler.health);
+                PlayerPrefs.SetInt("player_max_health", playerHandler.max_health);
+                PlayerPrefs.SetInt("player_damage", playerHandler.damage);
+            } else if ( item_name == "Vaccine" ) {
+                playerHandler.max_health += 5;
+                PlayerPrefs.SetInt("player_max_health", playerHandler.max_health);
+                PlayerPrefs.SetInt("player_damage", playerHandler.damage);
+                PlayerPrefs.SetInt("player_health", playerHandler.health);
+            } else if ( item_name == "Peps" ) {
+                playerHandler.damage += 5;
+                PlayerPrefs.SetInt("player_damage", playerHandler.damage);
+                PlayerPrefs.SetInt("player_health", playerHandler.health);
+                PlayerPrefs.SetInt("player_max_health", playerHandler.max_health);
+            }
+            
         }
     }
     

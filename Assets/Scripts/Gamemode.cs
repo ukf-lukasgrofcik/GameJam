@@ -5,6 +5,8 @@ using UnityEngine;
 public class Gamemode : MonoBehaviour
 {
 
+	public GameObject __POOF__;
+
 	private GameObject endEndGameCanvas;
 	private GameObject winGame;
 	private GameObject loseGame;
@@ -82,7 +84,11 @@ public class Gamemode : MonoBehaviour
             if (eHP - pScript.damage <= 0)
             {
                 enemyCount--;
-                Destroy(enemies[0]);
+				GameObject destruct = enemies[0];
+				destruct.GetComponent<HealthBarsScript>().GotKilled();
+				GameObject poof = Instantiate (__POOF__, destruct.transform.position, destruct.transform.rotation);
+				poof.transform.localScale = destruct.transform.localScale;
+                Destroy(destruct);
                 Debug.Log("player killed enemy");
             }
             else
@@ -148,6 +154,7 @@ public class Gamemode : MonoBehaviour
 			endEndGameCanvas.SetActive(true);
 			loseGame.SetActive(false);
         	winGame.GetComponent<Animator>().SetTrigger("fade");
+        	winGame.GetComponent<AudioScript>().Play();
 			return;
 		}
 
@@ -173,6 +180,8 @@ public class Gamemode : MonoBehaviour
     {
 		endEndGameCanvas.SetActive(true);
 		winGame.SetActive(false);
+        loseGame.GetComponent<Animator>().SetTrigger("fade");
+        loseGame.GetComponent<AudioScript>().Play();
     }
 
     public void endLevel()

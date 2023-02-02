@@ -11,6 +11,7 @@ public class Gamemode : MonoBehaviour
     private ChoicesScript choicesManager;
 
     public Animator playerAnimator;
+    public GameObject endGamePanel;
 
     public GameObject[] enemy;
     private GameObject[,] characters;
@@ -23,9 +24,11 @@ public class Gamemode : MonoBehaviour
     private int eDMG;
     private int eHP;
     
+    
     // Start is called before the first frame update
     void Start()
     {
+        endGamePanel.SetActive(false);
         player = GameObject.Find("Player");
         enemyLoc = GameObject.Find("chooseEnemyPosition");
         choicesManager = GameObject.Find("ChoicesManager").GetComponent<ChoicesScript>();
@@ -134,6 +137,12 @@ public class Gamemode : MonoBehaviour
     void gameOver()
     {
         ///ui for losing
+    }
+
+    public void endLevel()
+    {
+        endGamePanel.SetActive(true);
+        endGamePanel.GetComponent<Animator>().SetTrigger("end");
     }
 
     IEnumerator wait()

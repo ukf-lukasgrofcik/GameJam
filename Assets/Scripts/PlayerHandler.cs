@@ -60,6 +60,7 @@ public class PlayerHandler : MonoBehaviour
     void onMovedToEnd()
     {
         secondDoorAnimator.SetTrigger("close");
+        gamemode.endLevel();
     }
     
 }

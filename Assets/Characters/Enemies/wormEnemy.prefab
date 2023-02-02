@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1895523866480669427}
   - component: {fileID: 3072308032265738242}
   m_Layer: 0
-  m_Name: WormEnemy
+  m_Name: wormEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -51,6 +51,7 @@ MonoBehaviour:
   damage: 0
   armor: 0
   speed: 0
+  eSprite: {fileID: 21300000, guid: d0d006b04e3d6a04aa10e3dca852649e, type: 3}
 --- !u!33 &1063080743883046339
 MeshFilter:
   m_ObjectHideFlags: 0

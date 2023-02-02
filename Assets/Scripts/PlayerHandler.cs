@@ -6,7 +6,11 @@ using Random = UnityEngine.Random;
 
 public class PlayerHandler : MonoBehaviour
 {
+
+	public GameObject __POOF__;
+
     public int health;
+    public int max_health;
     public int damage;
     public int armor;
     public int speed;
@@ -31,15 +35,21 @@ public class PlayerHandler : MonoBehaviour
 
     public void InitStats()
     {
-        health = Random.Range(5, 10);
-        damage = Random.Range(2, 4);
-        armor = Random.Range(0, 1);
-        speed = Random.Range(1, 6);
+		if ( PlayerPrefs.HasKey("player_health") ) health = PlayerPrefs.GetInt("player_health");
+		if ( PlayerPrefs.HasKey("player_max_health") ) max_health = PlayerPrefs.GetInt("player_max_health");
+		if ( PlayerPrefs.HasKey("player_damage") ) damage = PlayerPrefs.GetInt("player_damage");
+
+		PlayerPrefs.SetInt("player_health", health);
+		PlayerPrefs.SetInt("player_max_health", max_health);
+		PlayerPrefs.SetInt("player_damage", damage);
     }
 
     public void kill()
     {
-        Destroy(this);
+		gameObject.GetComponent<HealthBarsScript>().GotKilled();
+		GameObject poof = Instantiate (__POOF__, gameObject.transform.position, gameObject.transform.rotation);
+		poof.transform.localScale = gameObject.transform.localScale;
+        Destroy(gameObject);
     }
 
     void onMovedToCombat()

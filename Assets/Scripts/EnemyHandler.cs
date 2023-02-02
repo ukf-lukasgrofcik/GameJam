@@ -7,6 +7,7 @@ using Random = UnityEngine.Random;
 public class EnemyHandler : MonoBehaviour
 {
     public int health;
+    public int max_health;
     public int damage;
     public int armor;
     public int speed;

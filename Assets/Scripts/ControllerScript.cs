@@ -25,6 +25,7 @@ public class ControllerScript : MonoBehaviour
 
     public void startGame()
     {
+        PlayerPrefs.DeleteAll();
         PlayerPrefs.SetInt("current_level", 1);
         PlayerPrefs.SetString("next_enemy", "GoblinPrefab");
         SceneManager.LoadScene("SampleScene");

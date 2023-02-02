@@ -13,7 +13,11 @@ public class Gamemode : MonoBehaviour
     public Animator playerAnimator;
     public GameObject endGamePanel;
 
-    public GameObject[] enemy;
+    public GameObject goblinPrefab;
+    public GameObject stumpPrefab;
+    public GameObject eggPrefab;
+    public GameObject wormPrefab;
+
     private GameObject[,] characters;
     private GameObject[] enemies;
 
@@ -106,9 +110,18 @@ public class Gamemode : MonoBehaviour
         }*/
         
         ///make look
+
+		GameObject enemy = null;
+		if ( PlayerPrefs.GetString("next_enemy") == "GoblinPrefab" ) enemy = goblinPrefab;
+		if ( PlayerPrefs.GetString("next_enemy") == "StumpPrefab" ) enemy = stumpPrefab;
+		if ( PlayerPrefs.GetString("next_enemy") == "EggPrefab" ) enemy = eggPrefab;
+		if ( PlayerPrefs.GetString("next_enemy") == "WormPrefab" ) enemy = wormPrefab;
+
+		if ( enemy == null ) enemy = goblinPrefab;
+
         enemies = new GameObject[]
         {
-            Instantiate(enemy[0],enemyLoc.transform)
+            Instantiate(enemy, enemyLoc.transform)
         };
 
         enemyCount++;
@@ -141,6 +154,9 @@ public class Gamemode : MonoBehaviour
 
     public void endLevel()
     {
+		int current_level = PlayerPrefs.GetInt("current_level");
+		PlayerPrefs.SetInt("current_level", current_level + 1);
+
         endGamePanel.SetActive(true);
         endGamePanel.GetComponent<Animator>().SetTrigger("end");
     }
